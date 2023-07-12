@@ -22,7 +22,9 @@ This repo contains the examples to open and save PDF documents in Azure Blob Sto
 
 **Step 6** To run the sample without debugging, press Ctrl+F5 or select Debug > Start Without Debugging. This will start the webservice without attaching the debugger.
 
-# To run the AngularClient sample for the PDF Viewer component, follow these steps:
+# Running the AngularClient Sample
+
+To run the AngularClient sample of the PDF Viewer component, follow these steps
 
 **Step 1** Open a terminal or command prompt.
 
@@ -44,7 +46,9 @@ The `ng serve` command compiles the Angular application and starts a development
 
 After executing these steps, the PDF Viewer component should be displayed in your browser, allowing you to view and interact with PDF documents stored in Azure Blob Storage.
 
-# To run the ReactClient sample for the PDF Viewer component, follow these steps:
+# Running the ReactClient Sample
+
+To run the ReactClient sample of the PDF Viewer component, follow these steps
 
 **Step 1** Open a terminal or command prompt.
 
@@ -68,7 +72,9 @@ The `npm start` command starts the React development server and automatically op
 
 After executing these steps, the PDF Viewer component should be displayed in your browser, allowing you to view and interact with PDF documents stored in Azure Blob Storage.
 
-# To run the JavaScriptClient sample for the PDF Viewer component, follow these steps:
+# Running the JavaScriptClient Sample
+
+To run the JavaScriptClient sample of the PDF Viewer component, follow these steps
 
 **Step 1** Open a terminal or command prompt.
 
@@ -92,7 +98,9 @@ The `npm start` command starts the JavaScript development server and automatical
 
 After executing these steps, the PDF Viewer component should be displayed in your browser, allowing you to view and interact with PDF documents stored in Azure Blob Storage.
 
-# To run the VueClient sample for the PDF Viewer component, follow these steps:
+# Running the VueClient Sample
+
+To run the VueClient sample of the PDF Viewer component, follow these steps
 
 **Step 1** Open a terminal or command prompt.
 
@@ -116,7 +124,9 @@ The `npm run dev` command starts the Vue development server and automatically op
 
 After executing these steps, the PDF Viewer component should be displayed in your browser, allowing you to view and interact with PDF documents stored in Azure Blob Storage.
 
-# To run the TypeScriptClient sample for the PDF Viewer component, follow these steps:
+# Running the TypeScriptClient Sample
+
+To run the TypeScriptClient sample of the PDF Viewer component, follow these steps
 
 **Step 1** Open a terminal or command prompt.
 
