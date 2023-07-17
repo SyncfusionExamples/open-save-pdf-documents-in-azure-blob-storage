@@ -54,21 +54,12 @@ namespace PdfViewerWebService
                     string fileName = jsonObject["document"];
                     BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(_storageContainerName);
                     BlockBlobClient blockBlobClient = containerClient.GetBlockBlobClient(fileName);
-                    MemoryStream memoryStream = new MemoryStream();
-                    blockBlobClient.DownloadTo(memoryStream);
-                    byte[] bytes = memoryStream.ToArray();
-                    stream = new MemoryStream(bytes);
+                    blockBlobClient.DownloadTo(stream);
                 }
                 else
                 {
-                    if (Convert.FromBase64String(jsonObject["document"]) is byte[] bytes)
-                    {
-                        stream = new MemoryStream(bytes);
-                    }
-                    else
-                    {
-                        return Content("Invalid document format");
-                    }
+                    byte[] bytes = Convert.FromBase64String(jsonObject["document"]);
+                    stream = new MemoryStream(bytes);
                 }
             }
             jsonResult = pdfviewer.Load(stream, jsonObject);
