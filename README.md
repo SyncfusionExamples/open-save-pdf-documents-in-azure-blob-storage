@@ -22,6 +22,8 @@ To run this application, you need Visual Studio 2019 or later versions.
 
 ## AngularClient Sample
 
+To run the AngularClient sample
+
 **Step 1** Open a terminal or command prompt.
 
 **Step 2** Navigate to the root directory of the AngularClient sample.
@@ -39,6 +41,8 @@ ng serve --open
 ```
 
 ## ReactClient Sample
+
+To run the ReactClient sample
 
 **Step 1** Open a terminal or command prompt.
 
@@ -58,6 +62,8 @@ npm start
 
 ## JavaScriptClient Sample
 
+To run the JavaScriptClient sample
+
 **Step 1** Open a terminal or command prompt.
 
 **Step 2** Navigate to the root directory of the JavaScriptClient sample.
@@ -76,6 +82,8 @@ npm start
 
 ##  VueClient Sample
 
+To run the VueClient sample
+
 **Step 1** Open a terminal or command prompt.
 
 **Step 2** Navigate to the root directory of the VueClient sample.
@@ -93,6 +101,8 @@ npm run dev
 ```
 
 ##  TypeScriptClient Sample
+
+To run the TypeScriptClient sample
 
 **Step 1** Open a terminal or command prompt.
 
