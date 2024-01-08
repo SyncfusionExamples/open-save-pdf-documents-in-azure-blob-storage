@@ -17,14 +17,11 @@
     private SfPdfViewer2 viewer;
     private string DocumentPath { get; set; }
 
-    // private readonly string connectionString = "Your Connection string from Azure";
-    // private readonly string containerName = "Your container name in Azure";
-    // private readonly string fileName = "File Name to be loaded into Syncfusion PDF Viewer";
-    private readonly string connectionString = "DefaultEndpointsProtocol=https;AccountName=azureblobcore;AccountKey=sZCWeRYyq1I3Vm6Gk5OU+wu+7+3rM02znKDrJX99nCiqjV81ZdZqqDA19hgWhOyAYIABXEcqdkQG+AStAZmJfA==;EndpointSuffix=core.windows.net";
-    private readonly string containerName = "blobcontainer";
-    private readonly string fileName = "PDF_Succinctly.pdf";
+    private readonly string connectionString = "Your Connection string from Azure";
+    private readonly string containerName = "Your container name in Azure";
+    private readonly string fileName = "File Name to be loaded into Syncfusion PDF Viewer";
 
-
+    // method to load a pdf from an Azure container to the PDF Viewer
     protected override void OnInitialized()
     {
         //Connection String of Storage Account
@@ -36,6 +33,7 @@
         DocumentPath = "data:application/pdf;base64," + Convert.ToBase64String(memoryStream.ToArray());
     }
 
+    // Method to save the downloaded document to the Azure Container
     public async void OnClick(MouseEventArgs args)
     {
         byte[] data = await viewer.GetDocumentAsync();
