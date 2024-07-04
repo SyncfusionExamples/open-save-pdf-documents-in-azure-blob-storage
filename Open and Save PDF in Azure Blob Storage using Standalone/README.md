@@ -1,26 +1,6 @@
 # open-save-pdf-documents-in-azure-blob-storage
 
-This repo contains the examples to open and save PDF documents in Azure Blob Storage using both Syncfusion Standalone PDF Viewer and Server-Backend PDF Viewer.
-
-# To run the webservice sample
-
-## Project pre-requisites
-
-* To run this application, you need Visual Studio 2019 or later versions.
-
-## Deploying and Running the Sample
-
-**Step 1** To deploy and run the webservice sample, follow these steps:
-
-**Step 2** Open Visual Studio 2019 or a later version.
-
-**Step 3** Open the solution file (.sln) in Visual Studio.
-
-**Step 4** Build the solution to ensure all the dependencies are resolved.
-
-**Step 5** To run the sample in debugging mode, press F5 or select Debug > Start Debugging from the menu. This will launch the webservice and allow you to debug the application.
-
-**Step 6** To run the sample without debugging, press Ctrl+F5 or select Debug > Start Without Debugging. This will start the webservice without attaching the debugger.
+This repo contains the examples to open and save PDF documents in Azure Blob Storage using the Syncfusion Standalone PDF Viewer.
 
 # Running the AngularClient Sample
 
