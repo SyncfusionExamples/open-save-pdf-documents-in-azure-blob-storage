@@ -79,7 +79,6 @@ function App() {
         if (reader.result) {
           const arrayBuffer = reader.result;
           const blobClient = new BlockBlobClient(SASUrl);
-          // Upload data to the blob
           const uploadBlobResponse = await blobClient.upload(arrayBuffer, arrayBuffer.byteLength);
           console.log(`Upload blob successfully`, uploadBlobResponse.requestId);
         }
