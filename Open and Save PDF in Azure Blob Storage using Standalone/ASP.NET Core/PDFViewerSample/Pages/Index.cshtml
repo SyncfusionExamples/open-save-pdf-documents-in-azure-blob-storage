@@ -1,0 +1,131 @@
+﻿@page "{handler?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <ejs-pdfviewer id="pdfviewer" style="height:600px" created="loadDocument" toolbarClick="toolbarClick">
+    </ejs-pdfviewer>
+</div>
+
+<script type="text/javascript">
+    var accountName = "*Your account name in Azure*";
+    var containerName = "*Your container name in Azure*";
+    var blobName = "*Your Blob name in Azure*";
+
+    window.onload = function () {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var toolItem1 = {
+            prefixIcon: 'e-icons e-pv-download-document-icon',
+            id: 'download_pdf',
+            tooltipText: 'Download file',
+            align: 'right'
+        };
+        pdfViewer.toolbarSettings = {
+            showTooltip: true,
+            toolbarItems: ['OpenOption', 'PageNavigationTool', 'MagnificationTool', 'PanTool', 'SelectionTool', 'SearchOption', 'PrintOption', toolItem1, 'UndoRedoTool', 'AnnotationEditTool', 'FormDesignerEditTool', 'CommentTool', 'SubmitForm']
+        };
+    }
+
+    function toolbarClick(args) {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (args.item && args.item.id === 'download_pdf') {
+            saveDocument();
+        }
+    }
+
+    function loadDocument() {
+        var url = 'https://' + accountName + '.blob.core.windows.net/' + containerName + '/' + blobName;
+        fetchAndConvertToBase64(url).then(function (base64String) {
+            if (base64String) {
+                var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+                setTimeout(function () {
+                    pdfViewer.load("data:application/pdf;base64," + base64String);
+                }, 2000);
+            } else {
+                console.error('Failed to fetch and convert file to base64.');
+            }
+        }).catch(function (error) {
+            console.error('Error:', error);
+        });
+    }
+
+    function fetchAndConvertToBase64(url) {
+        return new Promise(function (resolve, reject) {
+            fetch(url).then(function (response) {
+                if (!response.ok) {
+                    throw new Error('HTTP error! Status: ' + response.status);
+                }
+                return response.blob();
+            }).then(function (blob) {
+                blobToBase64(blob).then(function (base64String) {
+                    resolve(base64String);
+                });
+            }).catch(function (error) {
+                console.error('Error fetching file:', error);
+                reject(null);
+            });
+        });
+    }
+
+    function blobToBase64(blob) {
+        return new Promise(function (resolve, reject) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var base64String = reader.result ? reader.result.toString().split(',')[1] : '';
+                resolve(base64String);
+            };
+            reader.onerror = function (error) {
+                reject(error);
+            };
+            reader.readAsDataURL(blob);
+        });
+    }
+
+    function arrayBufferToBase64(buffer) {
+        var binary = '';
+        var bytes = new Uint8Array(buffer);
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+    }
+
+    function saveDocument() {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var fileName = pdfViewer.fileName;
+        pdfViewer.saveAsBlob().then(function (value) {
+            var reader = new FileReader();
+            reader.onload = async () => {
+                if (reader.result) {
+                    const arrayBuffer = reader.result;
+                    var base64String = arrayBufferToBase64(arrayBuffer);
+                    var data = {
+                        fileName: fileName,
+                        fileContent: base64String
+                    };
+
+                    fetch('/Index?handler=Upload', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    }).then(response => response.json())
+                        .then(data => {
+                            if (data.uri) {
+                                alert('File uploaded successfully! Blob URI: ' + data.uri);
+                            } else {
+                                alert('Error occurred..' + data.error);
+                            }
+                        }).catch(error => {
+                            alert('Error occurred..' + data.error);
+                        });
+                }
+            };
+            reader.readAsArrayBuffer(value);
+        });
+    }
+</script>
