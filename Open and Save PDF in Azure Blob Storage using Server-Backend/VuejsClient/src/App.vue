@@ -19,7 +19,7 @@ import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation,
     data() {
       return {
         // Replace the "localhost:44396" with the actual URL of your server
-        serviceUrl: "https://services.syncfusion.com/vue/production/api/pdfviewer",
+        serviceUrl: "https://localhost:44396/pdfviewer",
         //Replace `PDF_Succinctly.pdf` with the actual document name that you want to load from azure
         documentPath: "PDF_Succinctly.pdf"
       };
