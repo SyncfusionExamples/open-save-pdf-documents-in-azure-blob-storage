@@ -1,6 +1,6 @@
 # open-save-pdf-documents-in-azure-blob-storage
 
-This repo contains the examples to open and save PDF documents in Azure Blob Storage using both Syncfusion Standalone PDF Viewer and Server-Backend PDF Viewer.
+This repo contains the examples to open and save PDF documents in Azure Blob Storage using both Syncfusion&reg; Standalone PDF Viewer and Server-Backend PDF Viewer.
 
 # To run the webservice sample
 
